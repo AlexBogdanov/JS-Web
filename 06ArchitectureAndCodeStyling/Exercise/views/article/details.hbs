@@ -1,0 +1,40 @@
+<div class="container body-content">
+    <div class="row">
+        <div class="col-md-12">
+            <article>
+                <header>
+                    <h2>{{data.article.title}}</h2>
+                </header>
+
+                <p>
+                    {{data.article.content}}
+                </p>
+
+                <small class="author">
+                    {{data.article.author.fullName}}
+                </small>
+
+                <small>
+                    {{data.article.date}}
+                </small>
+
+                {{#if data.isAuth}}
+                <footer>
+                    <div class="pull-right">
+                        <a class="btn btn-success btn-xs" href="/article/edit/{{data.article._id}}">Edit &raquo;</a>
+                        <a class="btn btn-danger btn-xs" href="/article/delete/{{data.article._id}}">Delete &raquo;</a>
+                        <a class="btn btn-default btn-xs" href="/">Back &raquo;</a>
+                    </div>
+                </footer>
+                {{else}}
+                <footer>
+                    <div class="pull-right">
+                        <a class="btn btn-default btn-xs" href="/">Back &raquo;</a>
+                    </div>
+                </footer>
+                {{/if}}
+
+            </article>
+        </div>
+    </div>
+</div>

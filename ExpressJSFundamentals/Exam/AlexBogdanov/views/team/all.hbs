@@ -1,0 +1,137 @@
+{{#if notSearched}}
+
+{{#if isAdmin}}
+<h1>Teams</h1>
+<h3>Manage Users</h3>
+<div class="form">
+    <form action="/team/all/admin" method="POST">
+        <label>User</label>
+        <select name="userId">
+
+            {{#each users}}
+            <option value="{{id}}">{{username}}</option>
+            {{/each}}
+
+        </select>
+        <label>Team</label>
+        <select name="teamId">
+
+            {{#each teams}}
+            <option value="{{id}}">{{name}}</option>
+            {{/each}}
+
+        </select>
+        <input type="submit" value="Distribute">
+    </form>
+</div>
+
+<div class="teams">
+    {{#each teams}}
+    <div class="team">
+        <h2>{{name}}</h2>
+
+        <div class="team-info">
+            <h3>Members</h3>
+            {{#if hasMembers}}
+            {{#each members}}
+            <p>{{firstName}} {{lastName}}</p>
+            {{/each}}
+            {{else}}
+            <p>Team has no members</p>
+            {{/if}}
+            <h3>Projects</h3>
+            {{#if hasProjects}}
+            {{#each project}}
+            <p>{{name}}<p>
+                    {{/each}}
+                    {{else}}
+                    <p>Team has no projects</p>
+                    {{/if}}
+        </div>
+
+    </div>
+    {{/each}}
+</div>
+
+{{else}}
+<h1>Teams</h1>
+<form class="search" action="/team/all/user" method="POST">
+    <label>Seach: </label>
+    <input type="text" name="searchVal">
+    <input type="submit" value="Search">
+</form>
+
+<div class="teams">
+    {{#each teams}}
+    <div class="team">
+        <h2>{{name}}</h2>
+
+        <div class="team-info">
+            <h3>Members</h3>
+            {{#if hasMembers}}
+            {{#each members}}
+            <p>{{firstName}} {{lastName}}</p>
+            {{/each}}
+            {{else}}
+            <p>Team has no members</p>
+            {{/if}}
+            <h3>Projects</h3>
+            {{#if hasProjects}}
+            {{#each project}}
+            <p>{{name}}<p>
+                    {{/each}}
+                    {{else}}
+                    <p>Team has no projects</p>
+                    {{/if}}
+        </div>
+
+    </div>
+    {{/each}}
+</div>
+{{/if}}
+
+{{else}}
+<h1>Teams</h1>
+<form class="search" action="/team/all/user" method="POST">
+    <label>Seach: </label>
+    <input type="text" name="searchVal">
+    <input type="submit" value="Search">
+</form>
+
+{{#if showTeams}}
+
+<div class="teams">
+    {{#each filteredTeams}}
+    <div class="team">
+        <h2>{{name}}</h2>
+        <div class="team-info">
+            <h3>Members</h3>
+            {{#if hasMembers}}
+            {{#each members}}
+            <p>{{firstName}} {{lastName}}</p>
+            {{/each}}
+            {{else}}
+            <p>Team has no members</p>
+            {{/if}}
+            <h3>Projects</h3>
+            {{#if hasProjects}}
+            {{#each project}}
+            <p>{{name}}</p>
+            {{/each}}
+            {{else}}
+            <p>Team has no projects</p>
+            {{/if}}
+        </div>
+    </div>
+    {{/each}}
+</div>
+
+{{else}}
+
+<div class="team">
+    <h2>There are no teams with name: {{name}}</h2>
+</div>
+
+{{/if}}
+
+{{/if}}

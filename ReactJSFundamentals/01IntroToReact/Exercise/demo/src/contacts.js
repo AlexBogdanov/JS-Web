@@ -1,4 +1,4 @@
-[
+const data = [
   {
     "firstName": "Ivan",
     "lastName": "Ivanov",
@@ -53,4 +53,6 @@
     "phone": "0123 999 999",
     "email": "malory@misix.com"
   }
-]
+];
+
+export default data;
